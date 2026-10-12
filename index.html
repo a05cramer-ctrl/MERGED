@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MERGED ($MERGED) · an AI that ships real fixes</title>
+<meta name="description" content="MERGED is an AI agent that fixes real open issues on popular GitHub repos, in public. Every merged pull request is a receipt.">
+<meta name="theme-color" content="#0A0A0C">
+<meta property="og:title" content="MERGED ($MERGED)">
+<meta property="og:description" content="An AI that ships real fixes. Merged, or it didn't happen.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MERGED — Merged, or it didn't happen.">
+<meta property="og:description" content="An AI agent that fixes real open issues on popular GitHub repos, in public.">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600;700;800&family=Funnel+Sans:wght@400;500;600&family=Sometype+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="glyph" viewBox="0 0 16 16"><g shape-rendering="crispEdges"><rect x="5" y="1" width="2" height="1" fill="#F4F2EE"/><rect x="4" y="2" width="4" height="1" fill="#F4F2EE"/><rect x="5" y="3" width="2" height="10" fill="#F4F2EE"/><rect x="4" y="13" width="4" height="1" fill="#F4F2EE"/><rect x="5" y="14" width="2" height="1" fill="#F4F2EE"/><rect x="9" y="2" width="2" height="2" fill="#7A2BF0"/><rect x="9" y="4" width="1" height="1" fill="#7A2BF0"/><rect x="8" y="5" width="2" height="1" fill="#7A2BF0"/><rect x="8" y="6" width="1" height="1" fill="#7A2BF0"/><rect x="7" y="7" width="1" height="1" fill="#7A2BF0"/><rect x="4" y="7" width="4" height="4" fill="#7A2BF0"/><rect x="5" y="8" width="2" height="2" fill="#C9A6FF"/></g></symbol>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MERGED home"><svg style="color:var(--purple)"><use href="#glyph"/></svg><span data-name>MERGED</span></a>
+    <div class="nav-links">
+      <a href="#top">Queue</a><a href="#run">The run</a><a href="#receipts">Receipts</a><a href="#rules">Rules</a><a href="#fees">Fees</a>
+    </div>
+    <a class="btn btn-p" data-buy href="#token">Buy $<span data-ticker>MERGED</span></a>
+  </div>
+</nav>
+
+<main>
+  <canvas class="graph" aria-hidden="true"></canvas>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="inner">
+        <div class="hcopy">
+          <div class="eyebrow" data-node="start"><b>main</b><span>an AI agent that works in public</span></div>
+          <h1>An AI that ships real fixes. <span class="l2"><span class="m">Merged,</span> or it didn't happen.</span></h1>
+          <p class="sub">An AI agent that fixes open issues on popular GitHub repos and opens the pull request. It only counts when a maintainer merges it. $<span data-ticker>MERGED</span> fees pay for its compute.</p>
+          <div class="fork" data-fork><code id="forkCmd">git switch -c merged/fix-…</code><span>demo run ↓</span></div>
+          <div class="onbranch">
+            <div class="hrow">
+              <div class="counter" aria-live="polite">
+                <div class="n" id="heroCount">0</div>
+                <div class="lab"><b>merged</b><span id="heroCountNote">agent goes live at launch</span></div>
+              </div>
+              <div class="ctas">
+                <a class="btn btn-p" href="#run">Watch a run</a>
+                <a class="btn btn-g" href="#rules">Rules</a>
+              </div>
+            </div>
+            <a class="hca" id="heroCA" href="#token"><span class="t">$<span data-ticker>MERGED</span></span><span class="v" id="heroCAv">CA soon</span><span class="c" id="heroCAc">pump.fun</span></a>
+          </div>
+        </div>
+
+        <aside class="qcard" id="queue" aria-label="Live issue queue">
+          <div class="qhead">
+            <span class="title">queue</span>
+            <span class="tag live" id="qTag"><span class="dot"></span>LIVE · from GitHub</span>
+            <span class="qbar"></span>
+          </div>
+          <div class="qsrc"><span id="qSrc">label: good first issue · latest activity first</span><span class="qnew" id="qNew" hidden></span></div>
+          <div id="qBody">
+            <div class="skel"><i style="width:38%"></i><i style="width:88%"></i><i style="width:24%"></i></div>
+            <div class="skel"><i style="width:30%"></i><i style="width:72%"></i><i style="width:28%"></i></div>
+            <div class="skel"><i style="width:44%"></i><i style="width:80%"></i><i style="width:20%"></i></div>
+            <div class="skel"><i style="width:34%"></i><i style="width:66%"></i><i style="width:26%"></i></div>
+          </div>
+          <div class="qfoot">
+            <span id="qUpdated">connecting…</span><span class="sp"></span>
+            <button class="qbtn" id="qMore" type="button" hidden>Show all</button>
+            <button class="qbtn" id="qRefresh" type="button" aria-label="Refresh queue">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9"/><path d="M13.5 2.5v3h-3"/></svg>Refresh</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <section class="sec run" id="run" aria-labelledby="runTitle">
+    <div class="wrap"><div class="inner">
+      <div class="runhead">
+        <div>
+          <div class="commit"><span class="h">7a1c03e</span><span class="msg">run: one issue, start to merge</span></div>
+          <h2 id="runTitle">One issue.<br>Start to merge.</h2>
+          <p class="lede">It works from repos with 1,000+ stars and issues labelled bug, good first issue or help wanted. The issue below is real and comes from the live queue. The fix is a simulation until the agent goes live.</p>
+          <div class="tags"><span class="tag demo"><span class="dot"></span>DEMONSTRATION</span><span class="tag" id="runSrcTag">issue: live from GitHub</span></div>
+        </div>
+        <button class="btn btn-g" type="button" data-again>Run on another issue</button>
+      </div>
+
+      <ol class="steps" id="runSteps">
+        <li class="step idle" data-k="0">
+          <div class="sh"><div class="snum" data-step="0"><span>01</span><span class="st">queued</span></div><h3>Read the issue</h3><p>Pulls the issue, the repo's CONTRIBUTING file and its AI policy. Checks its own limits.</p></div>
+          <div class="art" id="artRead" data-wait="queued · starts when you get here"></div>
+        </li>
+        <li class="step idle" data-k="1">
+          <div class="sh"><div class="snum" data-step="1"><span>02</span><span class="st">queued</span></div><h3>Reproduce</h3><p>Writes a failing test that shows the bug on main.</p></div>
+          <div class="art" id="artRepro" data-wait="waits for 01 · read the issue"></div>
+        </li>
+        <li class="step idle" data-k="2">
+          <div class="sh"><div class="snum" data-step="2"><span>03</span><span class="st">queued</span></div><h3>Patch</h3><p>The smallest change that fixes it. The new test stays in.</p></div>
+          <div class="art" id="artPatch" data-wait="waits for 02 · reproduce"></div>
+        </li>
+        <li class="step idle" data-k="3">
+          <div class="sh"><div class="snum" data-step="3"><span>04</span><span class="st">queued</span></div><h3>Run the repo's tests</h3><p>The full suite, not only the new test.</p></div>
+          <div class="art" id="artTests" data-wait="waits for 03 · patch"></div>
+        </li>
+        <li class="step idle" data-k="4">
+          <div class="sh"><div class="snum" data-step="4"><span>05</span><span class="st">queued</span></div><h3>Open the PR</h3><p>First line says it's an AI. Links the issue.</p></div>
+          <div class="art" id="artPR" data-wait="waits for 04 · tests"></div>
+        </li>
+        <li class="step idle" data-k="5">
+          <div class="sh"><div class="snum" data-step="5"><span>06</span><span class="st">queued</span></div><h3>Answer review</h3><p>Replies to the maintainer and pushes the change.</p></div>
+          <div class="art" id="artReview" data-wait="waits for 05 · open the PR"></div>
+        </li>
+      </ol>
+
+      <div class="mergerow step idle" data-k="6">
+        <div class="sh" data-merge><div class="snum"><span>07</span><span class="st">queued</span></div><h3>Merged</h3><p>A maintainer merges it. That's the only thing that counts.</p></div>
+        <div>
+          <div class="stampbox">
+            <div class="stamp" id="stamp">MERGED<small id="stampSub">into main</small></div>
+            <div class="mnote" id="mnote">Demonstration. Not counted on the scoreboard.</div>
+          </div>
+          <button class="btn btn-g again" type="button" data-again>Run on another issue</button>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="sec" id="receipts" aria-labelledby="recTitle">
+    <div class="wrap"><div class="inner">
+      <div class="commit" data-node="receipts"><span class="h">2c9e7f1</span><span class="msg">receipts: count merged only</span></div>
+      <h2 id="recTitle">Receipts.</h2>
+      <p class="lede">Only merged pull requests count. Closed ones stay on the board too.</p>
+      <div class="score" aria-live="polite">
+        <div class="s1"><div class="sn" id="sMerged">0</div><div class="sl">merged</div></div>
+        <div class="s2"><div class="sn" id="sClosed">0</div><div class="sl">closed, not merged</div></div>
+        <div class="s3"><div class="sn" id="sOpen">0</div><div class="sl">open</div></div>
+      </div>
+      <p class="snote" id="scoreNote"></p>
+      <ul class="rlist" id="rList"></ul>
+    </div></div>
+  </section>
+
+  <section class="sec" id="rules" aria-labelledby="rulesTitle">
+    <div class="wrap"><div class="inner">
+      <div class="commit" data-node="rules"><span class="h">5d40b8a</span><span class="msg">rules: publish the limits</span></div>
+      <h2 id="rulesTitle">The rules it runs on.</h2>
+      <p class="lede">Published before launch. These are launch targets.</p>
+      <div class="file">
+        <div class="phead"><b>.github/AGENT_RULES.md</b><span class="r">launch targets</span></div>
+        <ol class="rules">
+          <li><span class="hd"># What MERGED works on</span></li>
+          <li><span class="it"><span class="k">-</span>Open issues on repos with <b>1,000+ stars</b>, labelled <b>bug</b>, <b>good first issue</b> or <b>help wanted</b>.</span></li>
+          <li><span class="bl"></span></li>
+          <li><span class="hd"># How it behaves</span></li>
+          <li><span class="it"><span class="k">-</span><b>Says it's an AI in every PR.</b> First line, no fine print.</span></li>
+          <li><span class="it"><span class="k">-</span><b>Skips any repo</b> whose CONTRIBUTING file or AI policy says no AI PRs.</span></li>
+          <li><span class="it"><span class="k">-</span><b>Max 1 open PR per repo.</b></span></li>
+          <li><span class="it"><span class="k">-</span><b>Max 10 PRs a day</b>, across all repos.</span></li>
+          <li><span class="it"><span class="k">-</span><b>No drive-by PRs.</b> No typo fixes, no reformatting.</span></li>
+          <li><span class="it"><span class="k">-</span><b>Closes its own PR</b> if a maintainer asks. No argument.</span></li>
+          <li><span class="bl"></span></li>
+          <li><span class="hd"># What counts</span></li>
+          <li><span class="it"><span class="k">-</span>A PR counts when a maintainer <b>merges</b> it. Opened doesn't count.</span></li>
+          <li><span class="cm">&lt;!-- closed and rejected PRs stay on the receipts board --&gt;</span></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="sec" id="fees" aria-labelledby="feesTitle">
+    <div class="wrap"><div class="inner">
+      <div class="commit" data-node="fees"><span class="h">9e3f6d2</span><span class="msg">fees: pay for compute</span></div>
+      <h2 id="feesTitle">Fees pay for the work.</h2>
+      <div class="split" id="split">
+        <div class="bar" role="img" aria-label="Creator fees: 80% compute, 20% buy and burn"><div class="c">80%</div><div class="b">20%</div></div>
+        <div class="bkey"><div><b>Compute</b>model + CI minutes</div><div><b>Buy &amp; burn</b>$<span data-ticker>MERGED</span></div></div>
+        <p>Creator fees from $<span data-ticker>MERGED</span> pay for the agent's model and CI minutes. 20% buys $<span data-ticker>MERGED</span> and burns it.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="sec" id="token" aria-labelledby="tokTitle">
+    <div class="wrap"><div class="inner">
+      <div class="commit" data-node="token"><span class="h">c41a7e0</span><span class="msg">token: launch on pump.fun</span></div>
+      <h2 id="tokTitle">$<span data-ticker>MERGED</span></h2>
+      <div class="tok">
+        <div class="ca"><span class="k">CA</span><code id="caText" class="soon">CA soon</code><button class="btn btn-g" type="button" id="caCopy" aria-disabled="true">Copy</button></div>
+        <div class="tbtns">
+          <a class="btn btn-p" id="tBuy" aria-disabled="true">Buy</a>
+          <a class="btn btn-g" id="tChart" aria-disabled="true">Chart</a>
+          <a class="btn btn-g" id="tX" aria-disabled="true" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.3 4.7H5.5l11.2 14.5z"/></svg>X</a>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="wrap"><div class="inner" data-node="end">
+      <a class="brand" href="#top" aria-label="Back to top"><svg style="color:var(--purple)"><use href="#glyph"/></svg><span data-name>MERGED</span></a>
+      <div class="fine">$<span data-ticker>MERGED</span> · Solana · pump.fun<br>MERGED is not affiliated with GitHub.</div>
+    </div></div>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
